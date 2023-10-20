@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	cpal(char const *s, char c)
+static int	cpal(char const *s, char c)
 {
 	int	palabras;
 
@@ -28,7 +28,7 @@ int	cpal(char const *s, char c)
 	return (palabras);
 }
 
-char	*annadir(char const *s, int tampal)
+static char	*annadir(char const *s, int tampal)
 {
 	char	*aux;
 	int		j;
@@ -50,7 +50,7 @@ char	*annadir(char const *s, int tampal)
 	return (aux);
 }
 
-void	rm_all(char **sol, int i)
+static void	rm_all(char **sol, int i)
 {
 	while (i >= 0)
 	{
@@ -60,7 +60,7 @@ void	rm_all(char **sol, int i)
 	free(sol);
 }
 
-int	hacer(const char *s, char c, int i, char **sol)
+static int	hacer(const char *s, char c, int i, char **sol)
 {
 	int	tampal;
 

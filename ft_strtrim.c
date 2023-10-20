@@ -32,7 +32,7 @@ static int	ft_isset(char c, char const *set)
 	return (0);
 }
 
-char	*ft_emptystr(void)
+static char	*ft_emptystr(void)
 {
 	char	*str;
 

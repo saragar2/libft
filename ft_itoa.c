@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char	*moldauxneg(size_t len, int res, char *aux)
+static char	*moldauxneg(size_t len, int res, char *aux)
 {
 	int	sol;
 	int	tam;
@@ -30,7 +30,7 @@ char	*moldauxneg(size_t len, int res, char *aux)
 	return (aux);
 }
 
-char	*moldauxpos(size_t len, int res, char *aux)
+static char	*moldauxpos(size_t len, int res, char *aux)
 {
 	int	sol;
 
@@ -43,7 +43,7 @@ char	*moldauxpos(size_t len, int res, char *aux)
 	return (aux);
 }
 
-char	*createaux(size_t len, int res, char *aux, int n)
+static char	*createaux(size_t len, int res, char *aux, int n)
 {
 	if (n != -2147483648)
 		len++;
@@ -54,7 +54,7 @@ char	*createaux(size_t len, int res, char *aux, int n)
 	return (aux);
 }
 
-size_t	newlen(int res)
+static size_t	newlen(int res)
 {
 	int	len;
 
