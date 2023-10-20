@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saragar2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 19:29:48 by saragar2          #+#    #+#             */
-/*   Updated: 2023/10/09 20:46:01 by saragar2         ###   ########.fr       */
+/*   Created: 2023/09/12 15:38:06 by saragar2          #+#    #+#             */
+/*   Updated: 2023/10/05 18:30:33 by saragar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+int	ft_isascii(int c)
 {
-	while (lst)
-	{
-		if (!lst->next)
-			return (lst);
-		lst = lst->next;
-	}
-	return (NULL);
+	if (c >= 0 && c <= 127)
+		return (1);
+	else
+		return (0);
 }
+/*int	main(void)
+{
+	int	ex;
+
+	ex = -2;
+	printf("%i", ft_isascii(ex));
+	printf("%i", isascii(ex));
+}*/

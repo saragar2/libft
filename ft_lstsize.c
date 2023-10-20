@@ -3,22 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saragar2 <saragar2@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: saragar2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 11:47:36 by saragar2          #+#    #+#             */
-/*   Updated: 2023/10/09 12:11:14 by saragar2         ###   ########.fr       */
+/*   Created: 2023/10/09 19:27:37 by saragar2          #+#    #+#             */
+/*   Updated: 2023/10/13 12:07:50 by saragar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_lstsize(t_list *lst)
+#include "libft.h"
+
+int	ft_lstsize(t_list *lst)
 {
-	int	count;
+	int		cont;
 	t_list	*nodo;
 
 	nodo = lst;
 	cont = 0;
 	if (!lst)
-		return(0);
+		return (0);
 	while (nodo != NULL)
 	{
 		cont++;

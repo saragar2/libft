@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saragar2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 19:29:48 by saragar2          #+#    #+#             */
-/*   Updated: 2023/10/09 20:46:01 by saragar2         ###   ########.fr       */
+/*   Created: 2023/09/12 16:23:26 by saragar2          #+#    #+#             */
+/*   Updated: 2023/09/21 19:20:02 by saragar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+size_t	ft_strlen(const char *s)
 {
-	while (lst)
+	size_t	cont;
+
+	cont = 0;
+	while (*s != '\0')
 	{
-		if (!lst->next)
-			return (lst);
-		lst = lst->next;
+		cont ++;
+		s ++;
 	}
-	return (NULL);
+	return (cont);
 }
+/*int	main()
+{
+	const char	ex[] = "hol0\n0--0a";
+
+	printf("%zu", ft_strlen(ex));
+	printf("%zu", strlen(ex));
+}*/

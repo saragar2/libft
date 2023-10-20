@@ -1,43 +1,69 @@
-#include "libf t.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: saragar2 <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/11 20:41:17 by saragar2          #+#    #+#             */
+/*   Updated: 2023/10/13 12:06:25 by saragar2         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int	errorcode(char const *s1, char const *set)
+#include "libft.h"
+
+static int	ft_isset(char c, char const *set)
 {
-	if (!s1 || !set)
-		return (0);
+	int	i;
+
+	i = 0;
+	while (set[i])
+	{
+		if (set[i] == '\t' && c == '\t')
+			return (1);
+		if (set[i] == '\n' && c == '\n')
+			return (1);
+		if (set[i] == ' ' && c == ' ')
+			return (1);
+		if (set[i] == c)
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
-char    *ft_strtrim(char const *s1, char const *set)
+char	*ft_emptystr(void)
 {
-	//para el codigo de errores, hay que crear un if donde la condicion sea la funcion auxiliar. si es == 0 , va a devolver null.
-	//la funcion auxiliar constará de diversas condiciones donde se revisará cada una de las problematicas posibles, y si se cumple alguna de ellas, se devolverá 0. sino, 1.
-        size_t  i;
-        size_t  j;
-        int     k;
-        int     len;
-        char    *res;
+	char	*str;
 
-        i = 0;
-        j = ft_strlen(s1) - 1;
-        k = 0;
-	if (errorcode(s1, set) == 0)
-		return(NULL);
-        while (ft_strchr(set, s1[i]) && i < j)
-                i++;
-        while (ft_strchr(set, s1[j]) && j > i)
-                j--;
-        len = j - i + 1;
-        res = malloc((len + 1) * sizeof(char));
-        if (!res)
-                return (NULL);
-        while (k < len)
-                res[k++] = s1[i++];
-        res[k] = '\0';
-        return (res);
+	str = (char *)malloc(sizeof(char));
+	if (!str)
+		return (NULL);
+	str[0] = '\0';
+	return (str);
 }
-/*int     main()
+
+char	*ft_strtrim(char const *s1, char const *set)
 {
-        char *res = ft_strtrim("holoa bueho", "ho");
-        printf("%s", res);
-        free(res);
-        return (0);
-}*/
+	char	*str;
+	size_t	s;
+	size_t	e;
+	size_t	i;
+
+	i = 0;
+	s = 0;
+	e = ft_strlen(s1) - 1;
+	while ((s1[s] && ft_isset (s1[s], set)))
+		s++;
+	while ((e > s && ft_isset (s1[e], set)))
+		e--;
+	if (s1[s] == '\0')
+		return (ft_emptystr());
+	str = (char *)malloc(sizeof(char) * (e - s) + 2);
+	if (!str)
+		return (NULL);
+	while (s <= e)
+		str[i++] = s1[s++];
+	str[i] = '\0';
+	return (str);
+}

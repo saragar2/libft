@@ -1,38 +1,54 @@
-LIB = ar rcs
-RM = rm -f
-
-CC = gcc
-CCFLAGS = -Wall -Wextra -Werror
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: saragar2 <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/10/04 19:37:51 by saragar2          #+#    #+#              #
+#    Updated: 2023/10/19 20:45:35 by saragar2         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 NAME = libft.a
-SRC =	ft_itoa.c 
-:
-OBJ = $(SRC:.c=.o)
-INCLUDE = libft.h
+BONUS_NAME = .bonus
 
-BONUSSRC = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c\
-ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c\
-ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c\
+SOURCES =		ft_isdigit.c ft_memset.c ft_strdup.c ft_strncmp.c \
+				ft_atoi.c ft_isprint.c ft_striteri.c ft_strnstr.c \
+				ft_bzero.c ft_itoa.c ft_putendl_fd.c ft_strjoin.c ft_strrchr.c \
+				ft_calloc.c ft_memchr.c ft_strlcat.c ft_strtrim.c \
+				ft_isalnum.c ft_memcmp.c ft_putstr_fd.c ft_strlcpy.c ft_substr.c \
+				ft_isalpha.c ft_memcpy.c ft_strlen.c ft_tolower.c ft_split.c \
+				ft_isascii.c ft_memmove.c ft_strchr.c ft_strmapi.c ft_toupper.c \
+				ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 
-BONUSOBJ = $(BONUSSRC:.c=.o)
+OBJECTS = $(SOURCES:.c=.o)
+
+BONUSS =		ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
+				ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c
+BONUS_OBJS = $(BONUSS:.c=.o)
+
+FLAGS = -Wall -Wextra -Werror
+REMOVE = rm -f
+CC = cc
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(INCLUDE)
-	$(LIB) $(NAME) $(OBJ)
+$(NAME): $(OBJECTS)
+	ar -rcs $(NAME) $(OBJECTS)
 
-bonus: $(OBJ) $(BONUSOBJ) $(INCLUDE)
-	$(LIB) $(NAME) $(BONUSOBJ) $(OBJ)
-
-%.o: %.c
-	$(CC) $(CCFLAGS) -c -o $@ $<
+bonus: $(BONUS_NAME)
 
 clean:
-	$(RM) $(OBJ) $(BONUSOBJ)
+	$(REMOVE) $(OBJECTS) $(BONUS_OBJS)
 
 fclean: clean
-	$(RM) $(NAME)
+	$(REMOVE) $(NAME) $(BONUS_NAME)
 
 re: fclean all
 
-rebonus: fclean bonus
+$(BONUS_NAME): $(OBJECTS) $(BONUS_OBJS)
+	ar rcs $(NAME) $(OBJECTS) $(BONUS_OBJS)
+	ar rcs $(BONUS_NAME) $(OBJECTS) $(BONUS_OBJS)
+
+.PHONY: all clean fclean re

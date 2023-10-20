@@ -3,17 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saragar2 <saragar2@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: saragar2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 12:12:47 by saragar2          #+#    #+#             */
-/*   Updated: 2023/10/09 13:23:05 by saragar2         ###   ########.fr       */
+/*   Created: 2023/10/09 19:37:02 by saragar2          #+#    #+#             */
+/*   Updated: 2023/10/19 18:35:28 by saragar2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void ft_lstadd_back(t_list **lst, t_list *new)
+#include "libft.h"
+
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	if (*lst)
-		ft_lstlast(*lst) -> next = new;
+		ft_lstlast(*lst)-> next = new;
 	else
-		lst = new;
+		*lst = new;
 }
