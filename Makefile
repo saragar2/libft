@@ -29,7 +29,7 @@ BONUSS =		ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 				ft_lstmap.c
 BONUS_OBJS = $(BONUSS:.c=.o)
 
-FLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 REMOVE = rm -f
 CC = cc
 
